@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine
+FROM rust:1.70-slim
 
 # Establecer directorio de trabajo
 WORKDIR /app
@@ -7,11 +7,10 @@ WORKDIR /app
 COPY . .
 
 # Compilar la aplicación
-RUN go mod download && \
-    go build -o google-workspace-mcp-server
+RUN cargo build --release
 
 # Exponer el puerto que utiliza la aplicación
 EXPOSE 8000
 
 # Comando para iniciar el servicio
-CMD ["./google-workspace-mcp-server"]
+CMD ["./target/release/mcp-google-workspace"]
