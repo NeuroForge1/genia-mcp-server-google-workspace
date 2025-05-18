@@ -3,10 +3,8 @@ FROM golang:1.19-alpine
 # Establecer directorio de trabajo
 WORKDIR /app
 
-# Clonar el repositorio
-RUN apk add --no-cache git && \
-    git clone https://github.com/NeuroForge1/genia-mcp-server-google-workspace.git . && \
-    apk del git
+# Copiar archivos del repositorio (que Render ya clonó)
+COPY . .
 
 # Compilar la aplicación
 RUN go mod download && \
