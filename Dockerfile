@@ -15,5 +15,5 @@ RUN cargo build --release
 # Exponer el puerto que utiliza la aplicación
 EXPOSE 8000
 
-# Comando para iniciar el servicio
-CMD ["./target/release/genia-mcp-server-google-workspace"]
+# Comando para iniciar el servicio (usando el nombre correcto del binario según Cargo.toml)
+CMD ["./target/release/mcp-google"]
